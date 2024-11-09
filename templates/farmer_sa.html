@@ -1,0 +1,71 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+<body>
+    <div class="center-content">
+        <form method="post" action="/myapp/farmer_sa_post" >
+            {% csrf_token %}
+            <h1 align="center">Shipping Address</h1>
+            <br>
+            <table class="table table-striped table-hover table-bordered">
+                <tr>
+                   <td><label for="prefered_date">Name :</label></td>
+                   <td><input type="text" id="toname" name="toname" class="form-control" required></td>
+               </tr>
+                <tr>
+                   <td><label for="prefered_date">Address:</label></td>
+                   <td><input type="text" id="address" name="address" class="form-control" required></td>
+               </tr>
+               <tr>
+                   <td><label for="near_hospital">Email:</label></td>
+                   <td><input type="email" name="email" class="form-control" required=""></td>
+               </tr>
+               <tr>
+                   <td><label for="near_hospital">Phone:</label></td>
+                   <td><input type="text" pattern="[0-9]{10}" maxlength="10" class="form-control" name="phone"  required=""></td>
+               </tr>
+               <tr>
+                   <td><label for="prefered_date">Land Mark:</label></td>
+                   <td><input type="text" id="place" name="place" class="form-control" required></td>
+               </tr>
+               <tr>
+                   <td><label for="near_hospital">Post :</label></td>
+                   <td><input type="text" id="post" name="post" class="form-control" required></td>
+               </tr>
+
+                <tr>
+                   <td><label for="near_hospital">Pin:</label></td>
+                   <td>  <input type="text" pattern="[0-9]{6}" maxlength="6" name="pin" class="form-control"  required=""></td>
+               </tr>
+                 <tr>
+                   <td><label for="near_hospital">District:</label></td>
+                   <td><input type="text" id="district" name="district" class="form-control" required></td>
+               </tr>
+                 <tr>
+                   <td><label for="near_hospital">State:</label></td>
+                   <td><input type="text" id="state" name="state" class="form-control" required></td>
+               </tr>
+               
+                
+           <tr>
+
+           <td colspan="2" align="center">
+           <input type="submit" value="Submit" class="btn btn-primary">
+           </td>
+           </tr>
+            </table>
+                <script>
+        // Get the current date
+        const today = new Date();
+
+        // Format the current date as "YYYY-MM-DD" (required by the input type=date)
+        const formattedDate = today.toISOString().split('T')[0];
+
+        // Set the minimum date for the input field
+        document.getElementById('regidate').min = formattedDate;
+    </script>
+
+        </form>
+    </div>
+</body>
+{% endblock %}

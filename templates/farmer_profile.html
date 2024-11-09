@@ -1,0 +1,56 @@
+
+
+{%extends 'findex.html'%}
+{% block body %}
+   <body>
+    <center>
+    <h1>Farmer Profile</h1>
+        <br>
+    <form >
+        {% csrf_token %}
+        <table class="table table-bordered table-hover table-striped">
+            <tr>
+                <td><label for="">Name:</label></td>
+                <td>{{ data.farmer_first_name }} {{ data.farmer_last_name }}</td>
+            </tr>
+
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td>{{ data.farmer_email }}</td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone:</label></td>
+                <td>{{ data.farmer_phone }}</td>
+            </tr>
+            <tr>
+                <td><label for="category">Category:</label></td>
+                <td>
+                   {{ data.farmer_category }}
+                </td>
+            </tr>
+            <tr>
+                <td><label for="aadar">Aadhar Number:</label></td>
+                <td>{{ data.farmer_aadar }}</td>
+            </tr>
+            <tr>
+                <td><label for="address">Address:</label></td>
+                <td>{{ data.farmer_address }}</td>
+            </tr>
+            <tr>
+                <td><label for="district">District:</label></td>
+                <td>{{ data.farmer_district }}</td>
+            </tr>
+            <tr>
+                <td><label for="state">State:</label></td>
+                <td>{{ data.farmer_state }}</td>
+            </tr>
+            <tr>
+                <td><label for="country">Country:</label></td>
+                <td>{{ data.farmer_country }}</td>
+            </tr>
+
+        </table>
+
+    </form>
+</center>
+{% endblock %}

@@ -1,0 +1,65 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+<div class="admin-view">
+    {% for i in key %}
+    <div class="card">
+        <div class="cow-info info-column">
+          <table class="table table-striped table-hover table-bordered">
+              <tr>
+                  <td colspan="2" align="center">
+                      <h3>Cattle Information</h3>
+                  </td>
+              </tr>
+    <tr>
+        <td><strong>Species:</strong></td>
+        <td>{{i.species}}</td>
+    </tr>
+    <tr>
+        <td><strong>Breed:</strong></td>
+        <td>{{i.breed}}</td>
+    </tr>
+    <tr>
+        <td><strong>Gender:</strong></td>
+        <td>{{i.gender}}</td>
+    </tr>
+    <tr>
+        <td><strong>Registration Date:</strong></td>
+        <td>{{i.regidate}}</td>
+    </tr>
+    <tr>
+        <td><strong>Date of Birth:</strong></td>
+        <td>{{i.dob}}</td>
+    </tr>
+    <tr>
+        <td><strong>Colour:</strong></td>
+        <td>{{i.colour}}</td>
+    </tr>
+    <tr>
+        <td><strong>Sire ID:</strong></td>
+        <td>{{i.sire_id}}</td>
+    </tr>
+    <tr>
+        <td><strong>Pregnancy:</strong></td>
+        <td>{{i.pregnancy}}</td>
+    </tr>
+    <tr>
+        <td><strong>Pregnancy Month:</strong></td>
+        <td>{{i.pregnancymonth}}</td>
+    </tr>
+    <tr>
+        <td><strong>Milking Status:</strong></td>
+        <td>{{i.milkingstatus}}</td>
+    </tr>
+    <tr>
+        <td><strong>Status:</strong></td>
+        <td>{{i.eartag_status}}</td>
+    </tr>
+</table>
+
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

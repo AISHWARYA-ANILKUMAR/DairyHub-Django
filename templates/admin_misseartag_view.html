@@ -1,0 +1,92 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+<h1 align="center">Ear Tag Replacement Requests</h1>
+    <br>
+  <form method="POST">
+            {% csrf_token %}
+            <table class="table table-bordered table-hover table-striped">
+                <tr> <td><label for="start_date">New Registration Start Date:</label></td>
+                    <td>
+                    <input type="date" id="start_date" name="start_date" class="form-control" ></td>
+                    <td>
+                        <label for="end_date">End Date:</label></td>
+                    <td>
+            <input type="date" id="end_date" name="end_date" class="form-control" >
+                    </td>
+                    <td>
+                          <label for="vals">Search Term:</label></td>
+                    <td>
+            <input type="text" id="vals" name="vals" class="form-control">
+                    </td>
+                    <td> <button type="submit" class="btn btn-info">Search</button>
+
+                    </td>
+                </tr>
+            </table>
+
+
+
+        </form>
+        <br>
+
+        <table class="table table-hover table-bordered table-striped">
+            <tr>
+                <th>Index</th>
+                <th>Farmer</th>
+                <th>Email</th>
+                <th>Species</th>
+              
+                <th>Previous Eartag Number</th>
+                <th>Previous Eartag Registration Date</th>
+                <th>New Eartag Registration Date</th>
+                <th>Missing Date</th>
+                <th>Additional Details</th>
+                <th>Full Details</th>
+                <th colspan="2" align="center">Actions</th>
+            </tr>
+
+            {% for i in view %}
+            <tr><td>{{forloop.counter}}</td>
+                <td>{{i.farmer.farmer_first_name}}</td>
+                <td>{{i.farmer.farmer_email}}</td>
+                <td>{{i.eartag.species}}</td>
+               
+                <td>{{i.prev_eartag_no}}</td>
+                <td>{{i.prev_eartag_regi_date}}</td>
+                <td>{{i.new_eartag_regi_date}}</td>
+                <td>{{i.missing_date}}</td>
+                <td>{{i.additional_details}}</td>
+                <td><a class="btn btn-info" href="/myapp/admin_1_misseartag_view/{{ i.id }}#m">view</a></td>
+
+                    {% if i.eartag_miss_status == 'pending' %}
+                        <td  align="center">
+                            <a class="btn btn-success" href="/myapp/admin_miss_accept/{{i.id}}">Approve</a></td>
+
+                        <td>
+                        <a class="btn btn-danger" href="/myapp/admin_miss_reject/{{i.id}}">Reject</a>
+                        </td>
+                    {% else %}
+                        {% if i.eartag_miss_status == 'Accepted' %}
+                            <td  align="center" colspan="2">
+                            <a style="color:green;">{{i.eartag_miss_status}}</a>
+                            </td>
+
+                        {% elif i.eartag_miss_status == 'Rejected' %}
+                            <td  align="center" colspan="2">
+                            <a style="color:red;">{{i.eartag_miss_status}}</a>
+                            </td>
+                        {% else %}
+                              <td  align="center" colspan="2">
+                            {{i.eartag_miss_status}}
+                              </td>
+                        {% endif %}
+                    {% endif %}
+
+            </tr>
+            {% endfor %}
+        </table>
+
+
+</body>
+{% endblock  %}

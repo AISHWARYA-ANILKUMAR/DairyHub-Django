@@ -1,0 +1,123 @@
+{% extends 'findex.html' %}
+
+{% block body %}
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <h1 class="text-center">Ear Tag Application</h1>
+        <br>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center">Cattle Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="species">Species:</label></td>
+                    <td>
+                        <select name="species" id="species" required class="form-control form-control-sm">
+                            <option value="" selected disabled>Select species</option>
+                            <option value="Cow">Cow</option>
+                            <option value="Bull">Bull</option>
+                            <option value="Buffalo">Buffalo</option>
+                            <option value="Stud Bull">Stud Bull</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="breed">Breed:</label></td>
+                    <td><input type="text" name="breed" id="breed" required class="form-control form-control-sm"></td>
+                </tr>
+                <tr>
+                    <td><label for="gender">Gender:</label></td>
+                    <td>
+                        <select name="gender" id="gender" required class="form-control form-control-sm">
+                            <option value="" selected disabled>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="dob">Date of Birth:</label></td>
+                    <td><input type="date" name="dob" id="dob" required class="form-control form-control-sm"></td>
+                </tr>
+                <tr>
+                    <td><label for="regidate">Registration Date:</label></td>
+                    <td><input type="date" name="regidate" id="regidate" min=""  required class="form-control form-control-sm"></td>
+                </tr>
+                <tr>
+                    <td><label for="colour">Colour:</label></td>
+                    <td><input type="text" name="colour" id="colour" required class="form-control form-control-sm"></td>
+                </tr>
+                <tr>
+                    <td><label for="sireid">Sire ID:</label></td>
+                    <td><input type="text" name="sireid" id="sireid" required class="form-control form-control-sm"></td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th colspan="2">Health</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><label for="pregnancy">Pregnancy:</label></td>
+                    <td>
+                        <select name="pregnancy" id="pregnancy" required class="form-control form-control-sm">
+                            <option value="" selected disabled>Select pregnancy status</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="pregnancy_month">Pregnancy Month:</label></td>
+                    <td>
+                        <select name="pregnancy_month" id="pregnancy_month" class="form-control form-control-sm" required>
+                            <option value="" selected disabled>Select pregnancy month</option>
+                            <option value="Not Pregnant">Not Pregnant</option>
+                            <option value="1">1 month</option>
+                            <option value="2">2 months</option>
+                            <option value="3">3 months</option>
+                            <option value="4">4 months</option>
+                            <option value="5">5 months</option>
+                            <option value="6">6 months</option>
+                            <option value="7">7 months</option>
+                            <option value="8">8 months</option>
+                            <option value="9">9 months</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="milking_status">Milking Status:</label></td>
+                    <td>
+                        <select name="milking_status" id="milking_status" class="form-control form-control-sm" required>
+                            <option value="" selected disabled>Select milking status</option>
+                            <option value="InMilk">In Milk</option>
+                            <option value="Dry">Dry</option>
+                            <option value="None">None</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+    </div>
+
+    <script>
+        // Get the current date
+        const today = new Date();
+
+        // Format the current date as "YYYY-MM-DD" (required by the input type=date)
+        const formattedDate = today.toISOString().split('T')[0];
+
+        // Set the minimum date for the input field
+        document.getElementById('regidate').min = formattedDate;
+    </script>
+
+</form>
+{% endblock %}

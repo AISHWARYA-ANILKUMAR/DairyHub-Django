@@ -1,0 +1,40 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+<body>
+<form method="post" action="/myapp/farmer_sa">
+    <h1 align="center">Your Cart</h1>
+    <br>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                
+
+                <th>Product</th>
+                <th>Image</th>
+                   <th>Price</th>
+                    <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in item %}
+            <tr>
+              
+                <td>{{ i.product_name }}</td>
+                <td>
+                <img src="{{ i.image }}" width="100px" height="100px"></td>
+                   <td>{{ i.product_price }}</td>
+                <td>{{ i.qty }}</td>
+            <td>{{ i.amount }}</td>
+            <td><a href="/myapp/farmer_cart/{{ i.id }}" class="btn btn-danger"> Remove</a> </td>
+            </tr>
+            {% endfor %}
+        <tr><td colspan="6" align="center">Total {{ total }}</td> </tr>
+          <tr><td colspan="6" align="center"><input type="submit" class="btn btn-primary" value="Purchase Now"/> </td> </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+{% endblock %}

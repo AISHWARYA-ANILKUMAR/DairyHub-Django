@@ -1,0 +1,114 @@
+{%extends 'aindex.html'%}
+{% block body %}
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+    <center>
+
+<div class="admin-view">
+    {% for i in key %}
+    <div class="card">
+        <div class="cow-info info-column">
+
+
+
+            <table class="table table-hover table-bordered table-striped">
+                <tr>
+        <td colspan="4" align="center"><h3>Cattle Information</h3></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Species:</strong></td>
+        <td colspan="2">{{i.species}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Breed:</strong></td>
+        <td colspan="2">{{i.breed}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Gender:</strong></td>
+        <td colspan="2">{{i.gender}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Registration Date:</strong></td>
+        <td colspan="2">{{i.regidate}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Date of Birth:</strong></td>
+        <td colspan="2">{{i.dob}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Colour:</strong></td>
+        <td colspan="2">{{i.colour}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Sire ID:</strong></td>
+        <td colspan="2">{{i.sire_id}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Pregnancy:</strong></td>
+        <td colspan="2">{{i.pregnancy}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Pregnancy Month:</strong></td>
+        <td colspan="2">{{i.pregnancymonth}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Milking Status:</strong></td>
+        <td colspan="2">{{i.milkingstatus}}</td>
+    </tr>
+    <tr>
+        <td colspan="4" align="center"><h3>Farmer Information</h3></td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>First Name:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_first_name}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Last Name:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_last_name}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Email:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_email}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Contact:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_phone}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Category:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_category}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Aadhar Number:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_aadar}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Address:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_address}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>District:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_district}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>State:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_state}}</td>
+    </tr>
+    <tr>
+        <td colspan="2"><strong>Country:</strong></td>
+        <td colspan="2">{{i.farmer.farmer_country}}</td>
+    </tr>
+</table>
+
+
+    </div>
+    {% endfor %}
+</div>
+   </div>
+    </div>
+</div>
+</body>
+{% endblock  %}

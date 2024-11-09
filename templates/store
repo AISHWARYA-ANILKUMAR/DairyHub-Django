@@ -1,0 +1,166 @@
+    
+class user_registration(models.Model):
+     
+login=models.ForeignKey('login',on_delete=models.CASCADE)
+first_name=models.CharField(max_length=64)
+last_name=models.CharField(max_length=64)
+email=models.EmailField(null= True)
+phone=models.ImageField(null= True)
+place=models.CharField(max_length=64)
+
+    
+class farmer_registration(models.Model):
+     login=models.ForeignKey('login',on_delete=models.CASCADE)
+     farmer_first_name=models.CharField(max_length=64)
+     farmer_last_name=models.CharField(max_length=64)
+     farmer_email=models.EmailField(null= True)
+     farmer_phone=models.ImageField(null= True)
+     farmer_place=models.CharField(max_length=64)
+
+     {% include 'navbar.html'%}
+
+<form method="post">
+    {% csrf_token %}
+    <center>
+        <table>
+            <tr>
+                <th><label for="">FIRST NAME</label></th>
+                <td><input type="text" name="firstname" id="" placeholder="Enter your first name"></td>
+            </tr>
+
+            <tr>
+                <th><label for="">LAST NAME</label></th>
+                <td><input type="text" name="lastname" id="" placeholder="Enter your last name"></td>
+            </tr>
+
+            <tr>
+                <th><label for="">EMAIL</label></th>
+                <td><input type="email" name="email" id="" placeholder="Enter your email"></td>
+            </tr>
+
+            <tr>
+                <th><label for="">PHONE</label></th>
+                <td><input type="number" name="phone" id="" placeholder="Enter your phone number"></td>
+            </tr>
+
+            <tr>
+                <th><label for="">PLACE</label></th>
+                <td><input type="text" name="place" id="" placeholder="Enter your place"></td>
+            </tr>
+
+            <tr>
+                <th><label for="">USERNAME</label></th>
+                <td><input type="text" name="user_name" placeholder="Enter your username"></td>
+            </tr>
+
+            <tr>
+                <th><label for="">PASSWORD</label></th>
+                <td><input type="password" name="passw" placeholder="Enter your password"></td>
+            </tr>
+
+            <tr>
+                <th align="center" colspan="2"><button type="submit">Save</button></th>
+            </tr>
+        </table>
+    </center>
+</form>
+
+---- prevois view code ---- 
+
+
+''''
+def user_register(request):
+    if request.method =='POST':
+        
+        fname=request.POST['firstname']
+        lname=request.POST['lastname']
+        eemail=request.POST['email']
+        pphone=request.POST['phone']
+        pplace=request.POST['place']
+        uname=request.POST['user_name']
+        passwd=request.POST['passw']
+        
+        q=login(username=uname,password=passwd,usertype='user')
+        q.save()
+      
+        
+        
+        obj=user_registration(first_name=uname, last_name=lname,email=eemail,phone=pphone,place=pplace,login=q)
+        obj.save() 
+    return render(request,'user_registration.html')
+
+def farmer_register(request):
+    if request.method =='POST':
+        
+        fname=request.POST['firstname']
+        lname=request.POST['lastname']
+        eemail=request.POST['email']
+        pphone=request.POST['phone']
+        pplace=request.POST['place']
+        uname=request.POST['user_name']
+        passwd=request.POST['passw']
+        
+        q=login(username=uname, password=passwd,usertype='farmer')
+        q.save()
+      
+        
+        
+        obj=user_registration(farmer_first_name=uname, farmer_last_name=lname,farmer_email=eemail,farmer_phone=pphone,farmer_place=pplace,login=q)
+        obj.save() 
+    return render(request,'user_registration.html')'''
+
+    ------------------------------------
+
+    
+class cowregistration(models.Model):
+CHOICES1 = (
+   ('Cattle', 'Cattle'),
+   ('Buffalo', 'Buffalo'),
+   )
+
+CHOICES2 =  (
+   ('Yes', 'Yes'),
+   ('No', 'No'),
+
+)
+
+CHOICES3 = (
+   ('InMilk', 'InMilk'),
+   ('Dry', 'Dry'),
+
+)
+
+farmer=models.ForeignKey('farmer_registration',on_delete=models.CASCADE)
+tag_no =models.IntegerField()
+species = models.CharField(max_length=64, choices=CHOICES1)
+breed=models.CharField(max_length=64)
+regi_date = models.DateField()
+dob = models.DateField()
+pregnancy = models.CharField(max_length=50, choices=CHOICES2)
+pregnacy_month = models.IntegerField()
+no_calvin = models.IntegerField()
+last_calvin = models.DateField()
+milking_status = models.CharField(max_length=50, choices=CHOICES3)
+farmer_assno = models.IntegerField()
+
+
+
+def cow_register(request):
+    
+    if request.method == 'POST':
+        
+        tag_no=request.POST['tagno']
+        species=request.POST['species']
+        breed=request.POST['breed']
+        regi_date=request.POST['regidate']
+        dob=request.POST['dob']
+        pregnancy=request.POST['pregnancy']
+        pregnancy_month=request.POST['pregnancy_month']
+        no_calvin=request.POST['nocalvin']
+        last_calvin=request.POST['lastcalvin']
+        milking_status=request.POST['milking_status']
+        farmer_name=request.POST['farmer_name']
+        farmer_ass_no=request.POST['farmer_ass_no']
+        address=request.POST['address']
+        district=request.POST['district']
+        state=request.POST['state']

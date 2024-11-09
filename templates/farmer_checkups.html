@@ -1,0 +1,44 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+
+    <body>
+    <h1 align="center">Health checkup application</h1>
+    <br>
+
+    <table class="table table-striped table-hover table-bordered">
+
+    <tr>
+        <th>Index</th>
+        <th>Species</th>
+        <th>Breed</th>
+        <th>Gender</th>
+        <th>Registration Date</th>
+        <th>action</th>
+        
+        
+    </tr>
+
+    {% for i in key %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.species}}</td>
+        <td>{{i.breed}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.regidate}}</td>
+
+        <td><a class="btn btn-primary" href="/myapp/farmer_healthcheckup/{{ i.id }}#m">Apply Health Checkup</a></td>
+        
+    
+    </tr>
+    {% endfor %}
+</table>
+</body>
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+
+<div class="admin-view">
+    {% for i in key %}
+
+
+
+<table class="table table-hover table-bordered table-striped">
+    <tr>
+        <td colspan="2" align="center"><h4>Cattle Information</h4></td>
+    </tr>
+    <tr>
+        <td><strong>Species:</strong></td>
+        <td>{{i.eartagai.species}}</td>
+    </tr>
+    <tr>
+        <td><strong>Breed:</strong></td>
+        <td>{{i.eartagai.breed}}</td>
+    </tr>
+    <tr>
+        <td><strong>Gender:</strong></td>
+        <td>{{i.eartagai.gender}}</td>
+    </tr>
+    <tr>
+        <td><strong>Registration Date:</strong></td>
+        <td>{{i.eartagai.regidate}}</td>
+    </tr>
+    <tr>
+        <td><strong>Date of Birth:</strong></td>
+        <td>{{i.eartagai.dob}}</td>
+    </tr>
+    <tr>
+        <td><strong>Colour:</strong></td>
+        <td>{{i.eartagai.colour}}</td>
+    </tr>
+    <tr>
+        <td><strong>Sire ID:</strong></td>
+        <td>{{i.eartagai.sire_id}}</td>
+    </tr>
+    <tr>
+        <td><strong>Pregnancy:</strong></td>
+        <td>{{i.eartagai.pregnancy}}</td>
+    </tr>
+    <tr>
+        <td><strong>Pregnancy Month:</strong></td>
+        <td>{{i.eartagai.pregnancymonth}}</td>
+    </tr>
+    <tr>
+        <td><strong>Milking Status:</strong></td>
+        <td>{{i.eartagai.milkingstatus}}</td>
+    </tr>
+</table>
+
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+{% endblock  %}

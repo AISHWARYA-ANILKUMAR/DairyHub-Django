@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:#363636;
+            min-width: 350px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {
+            background-color: #808080;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        
+        <a href="#">profile</a>
+
+        <a href="/admin_add_product">Add Product</a>
+
+                <div class="dropdown">
+                    <a href="#">FarmServ Requests</a>
+                    <div class="dropdown-content">
+                        <a href="/admin_view_eartag_request">Ear tag Requests</a>
+                        <a href="/admin_misseartag_view">Ear tag Replacement Requests</a>
+                        <a href="/admin_view_ai_all">Artificial Insemination Request</a>
+                        <a href="/admin_re_ai_view">Re-Artificial Insemination Request</a>
+                        <a href="/admin_view_checkups">Health Checkup Requests</a>
+                    </div>
+                </div>
+
+              <div class="dropdown">
+                    <a href="#">Reports</a>
+                    <div class="dropdown-content">
+                        <a href="/admin_view_farmers/">Farmers</a>
+
+                        <a href="/admin_view_eartag_report">Ear tag request</a>
+                        <a href="/admin_misseartag_view_report">Missing Ear tag</a>
+                        <a href="/admin_view_ai_report">Artificial Insemination</a>
+   <a href="/admin_re_ai_report"> Re Artificial Insemination</a>
+                    </div>
+                </div>
+                <a href="/logout">Logout</a>
+               
+            </nav>
+        </body>
+        </html>
+        
+    </nav>
+</body>
+</html>

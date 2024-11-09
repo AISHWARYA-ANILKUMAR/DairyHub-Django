@@ -1,0 +1,39 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+<body>
+    <h1 align="center">Your Favourites</h1>
+    <br>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                
+
+                <th>Product</th>
+                <th>Image</th>
+                   <th>Price</th>
+
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in item %}
+            <tr>
+              
+                <td>{{ i.PRODUCTS.product_name }}</td>
+                <td>
+                <img src="{{ i.PRODUCTS.product_image }}" width="100px" height="100px"></td>
+                   <td>{{ i.PRODUCTS.product_price }}</td>
+
+
+            <td><a href="/myapp/farmer_view_one_product/{{ i.PRODUCTS.id }}#m" class="btn btn-success"> Purchase</a> </td>
+                    <td><a href="/myapp/farmer_delete_fav/{{ i.PRODUCTS.id }}" class="btn btn-danger"> Remove</a> </td>
+            </tr>
+            {% endfor %}
+{#        <tr><td colspan="6" align="center">Total {{ total }}</td> </tr>#}
+{#          <tr><td colspan="6" align="center"><a href="farmer_pay" class="btn btn-primary">Purchase Now</a> </td> </tr>#}
+        </tbody>
+    </table>
+</body>
+{% endblock %}

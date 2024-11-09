@@ -1,0 +1,49 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+
+    <form method="post">
+        {% csrf_token %}
+            <h1 align="center">Re-Artificial Insemination  Request</h1>
+    <br>
+    <table class="table table-striped table-hover table-bordered">
+
+            <tr>
+               <td><label for="nearby_hospital">Nearby Veterinary Hospital</label></td>
+               <td><input type="text" class="form-control" name="nearby_hospital" value="{{near_veterinary_hospital}}" required>
+            </tr>
+            <tr>
+                <td><label for="prev_insemination_date">Previous Insemination Date:</label></td>
+                <td><input type="date" class="form-control" name="prev_insemi_date" max="" id="mid"   required></td>
+            </tr>
+            <tr>
+                <td><label for="reason">Reason for Re-Request:</label></td>
+                <td><textarea name="reason" class="form-control" rows="4" cols="50" required></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="pref_date">Preferred Date:</label></td>
+                <td><input type="date" class="form-control" name="pref_date" id="regidate" min="" required></td>
+            </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </td>
+        </tr>
+
+ <script>
+        // Get the current date
+        const today = new Date();
+
+        // Format the current date as "YYYY-MM-DD" (required by the input type=date)
+        const formattedDate = today.toISOString().split('T')[0];
+
+        // Set the minimum date for the input field
+        document.getElementById('regidate').min = formattedDate;
+          document.getElementById('mid').max = formattedDate;
+
+    </script>
+
+        </table>
+    </form>
+</body>
+{% endblock %}

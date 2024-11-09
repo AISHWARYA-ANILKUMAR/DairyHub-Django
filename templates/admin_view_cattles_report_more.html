@@ -1,0 +1,63 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+
+
+<BR>
+            <BR>
+           <h1>Farmer Information</h1>
+<BR>
+            <BR>
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <td><strong>First Name:</strong></td>
+        <td>{{i.farmer_first_name}}</td>
+    </tr>
+    <tr>
+        <td><strong>Last Name:</strong></td>
+        <td>{{i.farmer_last_name}}</td>
+    </tr>
+    <tr>
+        <td><strong>Email:</strong></td>
+        <td>{{i.farmer_email}}</td>
+    </tr>
+    <tr>
+        <td><strong>Contact:</strong></td>
+        <td>{{i.farmer_phone}}</td>
+    </tr>
+    <tr>
+        <td><strong>Category:</strong></td>
+        <td>{{i.farmer_category}}</td>
+    </tr>
+    <tr>
+        <td><strong>Aadhar Number:</strong></td>
+        <td>{{i.farmer_aadar}}</td>
+    </tr>
+    <tr>
+        <td><strong>Address:</strong></td>
+        <td>{{i.farmer_address}}</td>
+    </tr>
+    <tr>
+        <td><strong>District:</strong></td>
+        <td>{{i.farmer_district}}</td>
+    </tr>
+    <tr>
+        <td><strong>State:</strong></td>
+        <td>{{i.farmer_state}}</td>
+    </tr>
+    <tr>
+        <td><strong>Country:</strong></td>
+        <td>{{i.farmer_country}}</td>
+    </tr>
+</table>
+<BR>
+            <BR>
+            <style>
+                td{
+                    height: 60px;
+                }
+            </style>
+
+
+
+{% endblock  %}

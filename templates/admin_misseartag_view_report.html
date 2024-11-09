@@ -1,0 +1,89 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+    <body>
+    <center>
+<h1 align="center"> Ear Tag Replacement Reports</h1>
+    <br>
+        <form method="post" class="search-form">
+         <table class="table table-bordered table-hover table-striped">
+             <tr>
+                   <td>
+            <label for="start_date">New Registration  Start Date:</label>
+                      </td>
+                  <td>
+            <input type="date" id="start_date" name="start_date" class="form-control">
+                      </td>
+            <td>
+            <label for="end_date">End Date:</label>
+                </td>
+                  <td>
+            <input type="date" id="end_date" name="end_date" class="form-control">
+                      </td>
+                 <td>
+                     <input type="text" class="form-control" placeholder="Search for details" name="vals">
+                 </td>
+                 <td>
+                       <button class="btn btn-success move-right" type="submit">Search</button>
+                 </td>
+              <td ><button type="button" class="btn btn-info" onclick="printDiv()">PRINT</button></td>
+             </tr>
+
+
+         </table>
+
+        </form>
+
+<script>
+    function printDiv() {
+      var divContents = document.getElementById("div_print").innerHTML;
+      var a = window.open('', '', 'height=500, width=500');
+      a.document.write(divContents);
+      a.document.close();
+      a.print();
+    }
+  </script>
+
+<div id="div_print" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
+    <br><br>
+          <table class="table table-bordered table-hover table-striped">
+            <tr>
+                <th>Index</th>
+                <th>Farmer</th>
+                <th>Email</th>
+                <th>Species</th>
+              
+                <th>Previous Eartag Number</th>
+                <th>Previous Eartag Registration Date</th>
+                <th>New Eartag Registration Date</th>
+                <th>Missing Date</th>
+                <th>Additional Details</th>
+                <th>Status</th>
+
+            </tr>
+
+            {% for i in view %}
+            <tr><td>{{forloop.counter}}</td>
+                <td>{{i.farmer.farmer_first_name}}</td>
+                <td>{{i.farmer.farmer_email}}</td>
+                <td>{{i.eartag.species}}</td>
+               
+                <td>{{i.prev_eartag_no}}</td>
+                <td>{{i.prev_eartag_regi_date}}</td>
+                <td>{{i.new_eartag_regi_date}}</td>
+                <td>{{i.missing_date}}</td>
+                <td>{{i.additional_details}}</td>
+                <td>{{ i.eartag_miss_status }}
+                </td>
+            </tr>
+
+            {% endfor %}
+        <tr style="height:50px;">
+        <td colspan="9" align="center"><h3>Total No of Requests   :
+            {{ total }}</h3></td>
+    </tr>
+
+         </table>
+</div>
+</body>
+{% endblock  %}

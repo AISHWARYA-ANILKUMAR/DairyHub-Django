@@ -1,0 +1,52 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+<body>
+    <center>
+    <div class="container">
+        <h1>Ear Tag Re-Request</h1>
+        <form method="post">
+            {% csrf_token %}
+            <table class="table table-bordered table-striped table-hover">
+                <tr>
+                    <th><label for="preveartagno">Previous Ear Tag Number:</label></th>
+                    <td><input type="text" class="form-control" name="preveartagno" required></td>
+                </tr>
+                <tr>
+                    <th><label for="prev_regi_date">Previous Registration Date:</label></th>
+                    <td><input type="text" class="form-control" name="prev_regi_date" value="{{regidate}}" required></td>
+                </tr>
+                <tr>
+                    <th><label for="new_regi_date">New Registration Date:</label></th>
+                    <td><input type="date" class="form-control" name="new_regi_date" id="regidate" required></td>
+                </tr>
+                <tr>
+                    <th><label for="missing_date">Missing Date:</label></th>
+                    <td><input type="date" class="form-control" name="missing_date" id="mid" max="" required></td>
+                </tr>
+                <tr>
+                    <th><label for="add_details">Additional Details:</label></th>
+                    <td><textarea name="add_details" class="form-control" rows="2" required></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"> <button type="submit" class="btn btn-primary">Submit</button></td>
+                </tr>
+            </table>
+ <script>
+        // Get the current date
+        const today = new Date();
+
+        // Format the current date as "YYYY-MM-DD" (required by the input type=date)
+        const formattedDate = today.toISOString().split('T')[0];
+
+        // Set the minimum date for the input field
+        document.getElementById('regidate').min = formattedDate;
+          document.getElementById('mid').max = formattedDate;
+
+    </script>
+
+        </form>
+    </div>
+</center>
+</body>
+{% endblock %}

@@ -1,0 +1,53 @@
+{%include 'navbar_admin.html'%}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Breed</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>View Breed</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Breed</th>
+                <th>Gender</th>
+                <th>Registration Date</th>
+                <th>Date of Birth</th>
+                <th>Colour</th>
+                <th>Sire ID</th>
+                <th>Pregnancy</th>
+                <th>Pregnancy Month</th>
+                <th>Milking Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in eartag %}
+            <tr>
+                <td>{{ i.breed }}</td>
+                <td>{{ i.gender }}</td>
+                <td>{{ i.regidate }}</td>
+                <td>{{ i.dob }}</td>
+                <td>{{ i.colour }}</td>
+                <td>{{ i.sire_id }}</td>
+                <td>{{ i.pregnancy }}</td>
+                <td>{{ i.pregnancymonth }}</td>
+                <td>{{ i.milkingstatus }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

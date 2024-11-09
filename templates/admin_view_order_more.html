@@ -1,0 +1,72 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+<body>
+    <h1 align="center">Order more</h1>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <td colspan="4" align="center">Shipping Address</td>
+            </tr>
+         <tr>
+                <td align="center" style="text-align: start;vertical-align:top">To </td>
+             <td>{{ f.dname }}
+             <br>
+             {{ f.daddress }}
+             <br>
+             {{ f.dplace }}
+             <br>{{ f.dpost }}<br>{{ f.dpin }}<br>{{ f.ddistrict }}<br>{{ f.dstate }}</td>
+              <td align="center" style="text-align: start;vertical-align:top">Contact </td>
+             <td style="text-align: start;vertical-align:top">{{ f.dphone }}<br>{{ f.demail }}</td>
+            </tr>
+        </thead>
+
+    </table>
+    <br>
+    <br>
+<table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                
+
+                <th>Product</th>
+                <th>Image</th>
+                   <th>Price</th>
+                    <th>Quantity</th>
+                <th>Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+              
+                <td>{{ i.product_name }}</td>
+                <td>
+                <img src="{{ i.image }}" width="100px" height="100px"></td>
+                   <td>{{ i.product_price }}</td>
+                <td>{{ i.qty }}</td>
+            <td>{{ i.amount }}</td>
+
+            </tr>
+            {% endfor %}
+        <tr><td colspan="5" align="center"><h3>Total :{{ total }} Rs</h3></td> </tr>
+
+        </tbody>
+    </table>
+<form action="/myapp/admin_update_status" method="post">
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <td>Delivery Status</td>
+        <td><select name="status" class="form-control">
+            <option>Shipped</option>
+               <option>Delivered</option>
+        </select> </td>
+        <td>
+            <input type="submit" value="Update" class="btn btn-primary">
+        </td>
+    </tr>
+</table>
+</form>
+</body>
+{% endblock %}

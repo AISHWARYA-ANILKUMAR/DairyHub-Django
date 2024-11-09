@@ -1,0 +1,96 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+    <body>
+    <h1 align="center" >Health Checkup Requests</h1>
+    <br>
+     <form method="POST">
+            {% csrf_token %}
+            <table class="table table-bordered table-hover table-striped">
+                <tr> <td><label for="start_date">Start Date:</label></td>
+                    <td>
+                    <input type="date" id="start_date" name="start_date" class="form-control" ></td>
+                    <td>
+                        <label for="end_date">End Date:</label></td>
+                    <td>
+            <input type="date" id="end_date" name="end_date" class="form-control" >
+                    </td>
+                    <td>
+                          <label for="vals">Search Term:</label></td>
+                    <td>
+            <input type="text" id="vals" name="vals" class="form-control">
+                    </td>
+                    <td> <button type="submit" class="btn btn-info">Search</button>
+
+                    </td>
+                </tr>
+            </table>
+
+
+
+        </form>
+        <br>
+         <table class="table table-bordered table-hover table-striped">
+
+    <tr>
+        <th>Index</th>
+        <th>Farmer</th>
+        <th>Cattle Information</th>
+        <th>Medicial condition</th>
+        <th>symptoms</th>
+        <th>Additional services</th>
+        <th>Nearby veterinary hospital</th>
+        <th>prefered date</th>
+        <th>view full details</th>
+        <th colspan="2">Actions</th>
+        
+        
+    </tr>
+
+    {% for i in key %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.farmer.farmer_first_name}}</td>
+        <td>{{i.eartag.species}}-{{i.eartag.sire_id}}</td>
+        <td>{{i.medical_condition}}</td>
+        <td>{{i.symptoms}}</td>
+        <td>{{i.additional_services}}</td>
+        <td>{{i.nearby_hospital}}</td>
+        <td>{{i.prefered_date}}</td>
+       
+        <td><a class="btn btn-info" href="/myapp/admin_1_view_checkup/{{i.id}}#m">View</a></td>
+
+                    {% if i.check_status == 'pending' %}
+                        <td>
+                        <a class="btn btn-success" href="/myapp/admin_checkup_accept/{{i.id}}">Approve</a>
+                        </td>
+                        <td>
+                        <a class="btn btn-danger" href="/myapp/admin_checkup_reject/{{i.id}}">Reject</a>
+                        </td>
+                    {% else %}
+                        {% if i.check_status == 'Accepted' %}
+                            <td colspan="2" align="center">
+                            <a style="color: green">{{i.check_status}}</a>
+                            </td>
+                        {% elif i.check_status == 'Rejected' %}
+                            <td colspan="2" align="center">
+                            <a style="color: red">{{i.check_status}}</a>
+                            </td>
+                        {% else %}
+                            <td colspan="2" align="center">
+                            {{i.check_status}}
+                            </td>
+                        {% endif %}
+                    {% endif %}
+
+       
+    </tr>
+    {% endfor %}
+ </table>
+    </body>
+{% endblock  %}
+
+
+
+
+

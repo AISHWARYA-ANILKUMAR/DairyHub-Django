@@ -1,0 +1,73 @@
+{%extends 'aindex.html'%}
+{% block body %}
+<h1 align="center">Cattles </h1>
+    <br>
+            <form method="post" class="search-form">
+            <table class="table table-bordered table-hover table-striped">
+                <tr>
+
+                <td>
+                        <select class="form-control"  placeholder="Search for details" name="vals">
+                               <option value="All">Choose</option>
+                             <option value="Cow">Cow</option>
+                    <option value="Bull">Bull</option>
+                    <option value="Buffalo">Buffalo</option>
+                    <option value="Stud Bull">Stud Bull</option>
+                        </select>
+                    </td>
+                        <td>                            <button class="btn btn-primary" type="submit">Search</button></td>
+                            <td ><button type="button" class="btn btn-info" onclick="printDiv()">PRINT</button></td>
+
+                </tr>
+            </table>
+        </form>
+    <br>
+    <script>
+    function printDiv() {
+      var divContents = document.getElementById("div_print").innerHTML;
+      var a = window.open('', '', 'height=500, width=500');
+      a.document.write(divContents);
+      a.document.close();
+      a.print();
+    }
+  </script>
+<div id="div_print" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
+<table class="table table-bordered table-hover table-striped" >
+
+    <tr>
+        <th>Index</th>
+        <th>Species</th>
+        <th>Breed</th>
+        <th>Gender</th>
+        <th>Registration Date</th>
+        <th>Colour</th>
+        <th></th>
+        
+    </tr>
+
+    {% for i in data %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.species}}</td>
+        <td>{{i.breed}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.regidate}}</td>
+       <td>{{ i.colour }}</td>
+
+    <td><a href="/myapp/admin_view_cattles_report_more/{{ i.farmer_id }}#m" class="btn btn-success">Owner info</a> </td>
+    
+    </tr>
+    {% endfor %}
+<tr><td colspan="7" align="center"><h3>Total No of cattles : {{ total }}</h3></td> </tr>
+</table>
+</div>
+    <div class="clearfix"></div>
+</body>
+{% endblock %}
+
+
+
+
+
+
+

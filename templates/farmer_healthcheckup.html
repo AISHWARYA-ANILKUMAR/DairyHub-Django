@@ -1,0 +1,67 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+    <header>
+        <h1 align="center">Farmer Health Checkup</h1>
+    </header>
+    <br>
+   
+    <form method="post" action="/myapp/farmer_healthcheckup">
+          <table class="table table-striped table-hover table-bordered">
+            <tr>
+                <td>Cattle</td>
+                <td><select name="cattle" class="form-control">
+                    {% for i in pp %}
+<option value="{{i.id}}">{{i.species}}-{{i.sire_id}}</option>
+
+                    {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="medicial_condition">Medical Condition:</label></td>
+                <td><input type="text" id="medicial_condition" class="form-control" name="medicial_condition" required></td>
+            </tr>
+            <tr>
+                <td><label for="symptoms">Symptoms:</label></td>
+                <td><textarea id="symptoms" name="symptoms" class="form-control" rows="4" required></textarea></td>
+            </tr>
+            <tr>
+                <td><label>Additional Services:</label></td>
+                <td>
+                    <input type="radio" id="deworming" name="add_services" value="deworming" required>
+                    <label for="deworming">Deworming</label><br>
+                    <input type="radio" id="vaccination" name="add_services" value="vaccination">
+                    <label for="vaccination">Vaccination</label><br>
+                    <input type="radio" id="pregnancy_care" name="add_services" value="pregnancy care">
+                    <label for="pregnancy_care">Pregnancy Care</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="nearby_hospital">Nearby Hospital:</label></td>
+                <td><input type="text" id="nearby_hospital" class="form-control" name="nearby_hospital" required></td>
+            </tr>
+            <tr>
+                <td><label for="preferred_date">Preferred Date:</label></td>
+                <td><input type="date" id="preferred_date" class="form-control" name="preferred_date" required></td>
+            </tr>
+        <tr>
+
+   <td colspan="2" align="center">        <input type="submit" value="Submit" class="btn btn-primary">
+   </td>
+        </tr>
+          </table>
+    </form>
+
+    <script>
+        // Get the preferred date input element
+        var preferredDateInput = document.getElementById("preferred_date");
+
+        // Get today's date
+        var today = new Date().toISOString().split("T")[0];
+
+        // Set the minimum attribute of the input to today
+        preferredDateInput.min = today;
+    </script>
+   
+</body>
+{% endblock %}

@@ -1,0 +1,83 @@
+
+    <style>
+        table {
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cow Registration Form</h1>
+    <form method="POST" action="/submit-registration/">
+        {% csrf_token %}
+        <table>
+            
+            <tr>
+                <td>Tag Number</td>
+                <td><input type="number" name="tagno" required></td>
+            </tr>
+            <tr>
+                <td>Species</td>
+                <td>
+                    <select name="species" required>
+                        <option value="Cattle">Cattle</option>
+                        <option value="Buffalo">Buffalo</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Breed</td>
+                <td><input type="text" name="breed" required></td>
+            </tr>
+            <tr>
+                <td>Registration Date</td>
+                <td><input type="date" name="regidate" required></td>
+            </tr>
+           
+            <tr>
+                <td>Date of Birth</td>
+                <td><input type="date" name="dob" required></td>
+            </tr>
+            <tr>
+                <td>Pregnancy</td>
+                <td>
+                    <select name="pregnancy" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Pregnancy Month</td>
+                <td><input type="number" name="pregnacy_month" required></td>
+            </tr>
+            <tr>
+                <td>Number of Calvings</td>
+                <td><input type="number" name="nocalvin" required></td>
+            </tr>
+            <tr>
+                <td>Last Calving Date</td>
+                <td><input type="date" name="lastcalvin" required></td>
+            </tr>
+            <tr>
+                <td>Milking Status</td>
+                <td>
+                    <select name="milking_status" required>
+                        <option value="InMilk">In Milk</option>
+                        <option value="Dry">Dry</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Farmer Name</td>
+                <td><input type="text" name="farmer_name" required></td>
+            </tr>
+            <tr>
+                <td>Farmer Association</td>
+                <td><input type="text" name="farmer_association_no" required></td>
+            </tr>
+            

@@ -1,0 +1,191 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dairy hub User Signup Form Responsive Widget Template | Home :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="Haunt Signup Form Responsive, Signup form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<link href="/media/signup/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+<link href="/media/signup/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Josefin+Sans:400,600,700" rel="stylesheet">
+</head>
+
+ <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #f6f6f6;
+            margin: 0;
+        }
+
+
+
+        .containers{
+
+ width: 30%;
+            max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Clear floats */
+
+        }
+
+        .column {
+            width: 48%;
+            float: left;
+            margin-right: 4%;
+            margin-bottom: 15px;
+        }
+
+        .column:last-child {
+            margin-right: 0;
+        }
+
+        .agileinfo {
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .column {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+    </style>
+<style>
+    select {
+    width: 100%;
+    font-size: 15px;
+    padding: 15px 10px;
+    border: 2px solid #ffffff;
+    box-sizing: border-box;
+    outline: none;
+    color: #9bc4d4;
+    text-align: left;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    background-color: transparent;
+
+    }
+</style>
+</head>
+<body>
+
+<div class="row">
+
+ <h2 align="left" style="size: 70px">
+    <a href="/" style="color: white" align="left"> Go Home   </a></h2>
+    <br>
+
+
+
+        <form method="post" onsubmit="return validateForm()">
+              <div class="containers">    <br>
+
+<h2>FARMER SIGN UP</h2>
+ <br>
+
+            <div class="column">
+              <div class="agileinfo">
+<input type="text" name="firstname" placeholder="First Name" required="">
+</div>
+                      <div class="agileinfo">
+<input type="text" pattern="[0-9]{10}" maxlength="10" name="phone" placeholder="Phone" required="">
+</div>
+
+
+<div class="agileinfo">
+<input type="text" name="aadar" placeholder="Adhar" required pattern="[0-9]{12}" title="Enter 12 digit Adhar NUMBER number">
+</div>
+                <div class="agileinfo">
+                    <input type="text" name="address" placeholder="Address" required="">
+                </div>
+
+
+                       <div class="agileinfo">
+<input type="text" name="state" placeholder="State" required="">
+</div>
+                 <div class="agileinfo">
+<input type="text" name="user_name" placeholder="Username" id="username" required="">
+                      <span class="error" id="usernameError"></span>
+</div>
+
+
+            </div>
+
+            <div class="column">
+            <div class="agileinfo">
+<input type="text" name="lastname" placeholder="Last Name" required="">
+</div>
+                 <div class="agileinfo">
+         <select name="category" id="category" required class="select">
+                        <option value="" selected disabled>Select category</option>
+                        <option value="APL">APL</option>
+                        <option value="BPL">BPL</option>
+                        <option value="AYY">AYY</option>
+                    </select>
+    </div>
+
+<div class="agileinfo">
+<input type="text" name="district" placeholder="District" required="">
+</div>
+
+
+
+                  <div class="agileinfo">
+<input type="text" name="country" placeholder="Country" required="">
+</div>
+
+                <div class="agileinfo">
+<input type="email" name="email" placeholder="Email" required="">
+</div>
+ <div class="agileinfo">
+                    <input type="Password" name="passw"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="Password" required="">
+                </div>
+
+            </div>
+              </div>
+
+         <div class="row">
+                <div class="w3l_but">
+                    <button type="submit" >REGISTER</button>
+                </div>
+            </div>
+
+                   <div class="row">
+                <div class="w3l_but">
+                     <a href="/myapp/all_login" id="login_pop" class="button"><h3 style="color: white">LOGIN</h3></a>
+                </div>
+            </div>
+ <script>
+        function validateForm() {
+            var usernameInput = document.getElementById("username");
+            var usernameError = document.getElementById("usernameError");
+
+            // Check if the username matches the pattern
+            var pattern = /^[A-Za-z0-9](?:[A-Za-z0-9_]*[A-Za-z0-9])?$/;
+            if (!pattern.test(usernameInput.value)) {
+                usernameError.innerHTML = "Invalid username. Please follow the specified rules.";
+                return false;
+            } else {
+                usernameError.innerHTML = "";
+                return true;
+            }
+        }
+    </script>
+        <!-- Remaining HTML content... -->
+     </form>
+     <br>
+    </div>
+</div>
+</body>
+</html>

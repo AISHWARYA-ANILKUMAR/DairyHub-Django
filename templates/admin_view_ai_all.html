@@ -1,0 +1,89 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+<h1 align="center">Artificial Insemination Requests</h1>
+
+<br>
+      <form method="POST">
+            {% csrf_token %}
+            <table class="table table-bordered table-hover table-striped">
+                <tr> <td><label for="start_date">Start Date:</label></td>
+                    <td>
+                    <input type="date" id="start_date" name="start_date" class="form-control" ></td>
+                    <td>
+                        <label for="end_date">End Date:</label></td>
+                    <td>
+            <input type="date" id="end_date" name="end_date" class="form-control" >
+                    </td>
+                    <td>
+                          <label for="vals">Search Term:</label></td>
+                    <td>
+            <input type="text" id="vals" name="vals" class="form-control">
+                    </td>
+                    <td> <button type="submit" class="btn btn-info">Search</button>
+
+                    </td>
+                </tr>
+            </table>
+
+
+
+        </form>
+        <br>
+         <table class="table table-bordered table-hover table-striped">
+            <tr>
+                <th>Index</th>
+                <th>Farmer Name</th>
+                <th>Cattle Information</th>
+                <th> Email</th>
+                <th>Prefered Date of insemination</th>
+                <th>Nearby Veterinary Hospital</th>
+                <th>Is inseminated Before</th>
+                <th>Is first insemination</th>
+                <th>No :of inseminations</th>
+                <th>View Full Details</th>
+                <th colspan="2">Actions</th>
+            </tr>
+
+            {% for i in key %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.farmerai.farmer_first_name}}</td>
+                <td>{{i.eartagai.species}}-{{i.eartagai.sire_id}}</td>
+                <td>{{i.farmerai.farmer_email}}
+                <td>{{i.prefered_date}}</td>
+                <td>{{i.near_veterinary_hospital}}</td>
+                <td>{{i.inseminated_before}}</td>
+                <td>{{i.is_first_insemination}}</td>
+                <td>{{i.no_of_inseminations}}</td>
+                
+                <td><a class="btn btn-info" href="/myapp/admin_1_ai_view/{{i.id }}#m">View</a></td>
+
+                    {% if i.ai_status == 'pending' %}
+                        <td>
+                        <a class="btn btn-success" href="/myapp/admin_ai_accept/{{i.id}}">Approve</a></td>
+                        <td>
+                        <a class="btn btn-danger" href="/myapp/admin_ai_reject/{{i.id}}">Reject</a>
+                        </td>
+                    {% else %}
+                        {% if i.ai_status == 'Accepted' %}
+                           <td colspan="2" align="center"> <a style="color: green">{{i.ai_status}}</a>
+                            </td>
+                        {% elif i.ai_status == 'Rejected' %}
+                            <td colspan="2" align="center">
+                            <a style="color: red">{{i.ai_status}}</a>
+                            </td>
+                        {% else %}
+                            <td colspan="2" align="center">
+                            {{i.ai_status}}
+                            </td>
+                        {% endif %}
+                    {% endif %}
+
+            </tr>
+            {% endfor %}
+        </table>
+
+
+    </body>
+{% endblock  %}

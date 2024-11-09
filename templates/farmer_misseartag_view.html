@@ -1,0 +1,49 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+    <h1 align="center">Ear Tag Replacement Requests</h1>
+    <br>
+    <table class="table table-striped table-hover table-bordered">
+
+
+    <tr>
+        <th>Index</th>
+        <th>Species</th>
+        <th>Breed</th>
+        <th>Gender</th>
+        <th>Previous Registration Date</th>
+        <th>Registration Date</th>
+        <th>Missing Date</th>
+        <th>Status</th>
+        
+        
+    </tr>
+
+    {% for i in key %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.eartag.species}}</td>
+        <td>{{i.eartag.breed}}</td>
+        <td>{{i.eartag.gender}}</td>
+        <td>{{i.prev_eartag_regi_date}}</td>
+        <td>{{i.new_eartag_regi_date}}</td>
+        <td>{{i.missing_date}}</td>
+        <td>{{i.eartag_miss_status}}</td>
+       
+
+
+        
+    
+    </tr>
+    {% endfor %}
+</table>
+</body>
+{% endblock %}
+
+
+
+
+
+
+
+

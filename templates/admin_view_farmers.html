@@ -1,0 +1,78 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+    <body>
+    <center>
+    <h1>View Farmers</h1>
+
+    <form method="post" enctype="multipart/form-data">
+    <table class="table table-bordered table-hover table-striped">
+
+          <tr>
+            <td><label for="farmer_name">Farmer Name:</label></td>
+            <td><input type="text" id="farmer_name" name="farmer_name" class="form-control" ></td>
+
+            <td ><button type="submit" class="btn btn-success">SEARCH</button></td>
+ <td ><button type="button" class="btn btn-info" onclick="printDiv()">PRINT</button></td>
+          </tr>
+
+
+      </table>
+
+    </form>
+    </center>
+
+<script>
+    function printDiv() {
+      var divContents = document.getElementById("div_print").innerHTML;
+      var a = window.open('', '', 'height=500, width=500');
+      a.document.write(divContents);
+      a.document.close();
+      a.print();
+    }
+  </script>
+
+<div id="div_print" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
+    <br><br>    
+
+  <table class="table table-bordered table-hover table-striped">
+        <tr>
+        <th>Index</th>
+        <th>Farmer Name</th>
+        <th>Farmer Contact</th>
+        <th>Farmer Category</th>
+        <th>Farmer Adhar</th>
+            <th>Farmer Address</th>
+<th></th>
+        </tr>
+
+
+        {% for i in viewpro %}
+        <tr>
+
+            <td>{{forloop.counter}}</td>
+            <td>{{i.farmer_first_name}} {{ i.farmer_last_name }}</td>
+            <td>{{ i.farmer_email }}<br>{{ i.farmer_phone }}</td>
+            <td>{{i.farmer_category}}</td>
+            <td>{{i.farmer_aadar}}</td>
+            <td>{{i.farmer_address}}
+            <br>
+            {{ i.farmer_district }} <br>
+            {{ i.farmer_state }}<br>
+                {{ i.farmer_country }}
+            </td>
+<td><a href="/myapp/admin_view_farmers_cattle/{{ i.id }}" class="btn btn-info">Cattles</a> </td>
+
+        </tr>
+        {% endfor %}
+    <tr style="height:50px;">
+        <td colspan="6" align="center"><h3>Total No of Farmers    :
+            {{ total }}</h3></td>
+    </tr>
+
+ </table>
+</div>
+</body>
+{% endblock  %}
+
+

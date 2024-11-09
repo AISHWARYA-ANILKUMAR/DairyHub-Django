@@ -1,0 +1,54 @@
+<section class="product">
+	<div class="product__photo">
+		<div class="photo-container">
+			<div class="photo-main">
+				<div class="controls">
+					
+				</div>
+				<img src="https://res.cloudinary.com/john-mantas/image/upload/v1537291846/codepen/delicious-apples/green-apple-with-slice.png" alt="green apple slice">
+			</div>
+			<div class="photo-album">
+				<ul>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="product__info">
+		<div class="title">
+			<h1>{{product_name}}</h1>
+			<
+		</div>
+		<div class="price">
+			R$ <span>{{product_price}}</span>
+		</div>
+		<div class="variant">
+			<h3>SELECT </h3>
+			<tr>
+                <th>Amount</th>
+                <td><input type="text" id="amm" readonly name="rate" value="{{amount}}" class="form-control" required=""></td>
+            </tr>
+            <br>
+            <tr>
+                <th>Quantity</th>
+                <td><input type="number" min="0" id="quan" onchange="textChange()" name="qty" class="form-control" required=""></td>
+            </tr>
+            <br>
+            <tr>
+                <th>Total</th>
+                <td><input type="text" readonly id="total" name="to" class="form-control" required=""></td>
+            </tr>
+            <tr>
+				
+		</div>
+		<div class="description">
+			<h3>DETAILS</h3>
+            <p class="product-status">{{ i.product_description }}</p>
+		</div>
+		<button class="buy--btn">ADD TO CART</button>
+	</div>
+</section>
+
+<footer>
+	<p>Design from <a href="https://dribbble.com/shots/5216438-Daily-UI-012">dribbble shot</a> of <a href="https://dribbble.com/rodrigorramos">Rodrigo Ramos</a></p>
+</footer>

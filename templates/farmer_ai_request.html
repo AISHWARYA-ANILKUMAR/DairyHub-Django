@@ -1,0 +1,71 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+<body>
+    <div class="center-content">
+        <form method="post" >
+            {% csrf_token %}
+            <h1 align="center">Artificial Insemination Application</h1>
+            <br>
+             <table class="table table-striped table-hover table-bordered">
+                <tr>
+                    <td>Cattle</td>
+                    <td><select name="cattle" class="form-control">
+                        {% for i in pp %}
+<option value="{{i.id}}">{{i.species}}-{{i.sire_id}}</option>
+
+                        {% endfor %}
+                    </select></td>
+                </tr>
+                <tr>
+                    <td><label for="prefered_date">Preferred Date:</label></td>
+                    <td><input type="date" id="regidate" name="prefered_date" class="form-control" required></td>
+                </tr>
+                <tr>
+                    <td><label for="near_hospital">Nearby Hospital:</label></td>
+                    <td><input type="text" id="near_hospital" name="near_hospital" class="form-control" required></td>
+                </tr>
+                <tr>
+                    <td><label for="insemi_before">Inseminated Before:</label></td>
+                    <td>
+                        <input type="radio" id="insemi_before_yes" name="insemi_before"  value="yes" required>
+                        <label for="insemi_before_yes">Yes</label>
+                        <input type="radio" id="insemi_before_no" name="insemi_before" value="no" required>
+                        <label for="insemi_before_no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="is_first_insemi">First Insemination:</label></td>
+                    <td>
+                        <input type="radio" id="is_first_insemi_yes" name="is_first_insemi" value="yes" required>
+                        <label for="is_first_insemi_yes">Yes</label>
+                        <input type="radio" id="is_first_insemi_no" name="is_first_insemi" value="no" required>
+                        <label for="is_first_insemi_no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="no_of_insemi">Number of Inseminations:</label></td>
+                    <td><input type="number" id="no_of_insemi" name="no_of_insemi" class="form-control" required></td>
+                </tr>
+            <tr>
+
+            <td colspan="2" align="center">
+            <input type="submit" value="Submit" class="btn btn-primary">
+            </td>
+            </tr>
+             </table>
+                <script>
+        // Get the current date
+        const today = new Date();
+
+        // Format the current date as "YYYY-MM-DD" (required by the input type=date)
+        const formattedDate = today.toISOString().split('T')[0];
+
+        // Set the minimum date for the input field
+        document.getElementById('regidate').min = formattedDate;
+    </script>
+
+        </form>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "uindex.html" %}
+{% block body %}
+<body>
+    <center>
+    <h1>User Profile</h1>
+    <form  >
+        {% csrf_token %}
+        <table class="table table-bordered table-striped">
+            <tr>
+                <td><label for="firstname">First Name:</label></td>
+                <td>{{ data.first_name }}</td>
+            </tr>
+            <tr>
+                <td><label for="lastname">Last Name:</label></td>
+                <td>{{ data.last_name }}</td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td>{{ data.email }}</td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone:</label></td>
+                <td>{{ data.phone }}</td>
+            </tr>
+            <tr>
+                <td><label for="address">Address:</label></td>
+                <td>{{ data.address }}</td>
+            </tr>
+            <tr>
+                <td><label for="district">District:</label></td>
+                <td>{{ data.district }}</td>
+            </tr>
+            <tr>
+                <td><label for="state">State:</label></td>
+                <td>{{ data.state }}</td>
+            </tr>
+            <tr>
+                <td><label for="country">Country:</label></td>
+                <td>{{ data.country }}</td>
+            </tr>
+
+        </table>
+
+    </form>
+</center>
+{% endblock %}
+

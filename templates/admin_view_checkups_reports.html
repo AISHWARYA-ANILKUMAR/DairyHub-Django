@@ -1,0 +1,95 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+    <script>
+    function printDiv() {
+      var divContents = document.getElementById("div_print").innerHTML;
+      var a = window.open('', '', 'height=500, width=500');
+      a.document.write(divContents);
+      a.document.close();
+      a.print();
+    }
+  </script>
+
+    <body>
+      <h1 align="center">Health Checkup Report</h1>
+      <br>
+        <form method ="POST">
+            {% csrf_token %}
+           <table class="table table-bordered table-hover table-striped">
+             <tr>
+                   <td>
+            <label for="start_date">Start Date:</label>
+                      </td>
+                  <td>
+            <input type="date" id="start_date" name="start_date" class="form-control">
+                      </td>
+            <td>
+            <label for="end_date">End Date:</label>
+                </td>
+                  <td>
+            <input type="date" id="end_date" name="end_date" class="form-control">
+                      </td>
+                 <td>
+                     <input type="text" class="form-control" placeholder="Search for details" name="vals">
+                 </td>
+                 <td>
+                       <button class="btn btn-success move-right" type="submit">Search</button>
+                 </td>
+              <td ><button type="button" class="btn btn-info" onclick="printDiv()">PRINT</button></td>
+             </tr>
+
+
+         </table>
+
+        </form>
+        <div id="div_print" class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
+    <br><br>
+ <table class="table table-bordered table-hover table-striped">
+
+    <tr>
+        <th>Index</th>
+        <th>Farmer Name</th>
+        <th>Cattle Information</th>
+
+        <th>Medicial condition</th>
+        <th>symptoms</th>
+        <th>Additional services</th>
+        <th>Nearby veterinary hospital</th>
+        <th>prefered date</th>
+        <th>Status</th>
+
+        
+        
+    </tr>
+
+    {% for i in key %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+          <td>{{i.farmer.farmer_first_name}}  {{ i.farmer.farmer_last_name }}</td>
+          <td>{{i.eartag.species}}-{{i.eartag.sire_id}}</td>
+        <td>{{i.medical_condition}}</td>
+        <td>{{i.symptoms}}</td>
+        <td>{{i.additional_services}}</td>
+        <td>{{i.nearby_hospital}}</td>
+        <td>{{i.prefered_date}}</td>
+    <td>{{ i.check_status }}</td>
+       
+
+       
+    </tr>
+    {% endfor %}
+
+     <tr style="height:50px;"><td colspan="8" align="center"><h3>Total Checkup request  : {{ total }}</h3></td> </tr>
+</table>
+        </div>
+
+</body>
+{% endblock %}
+
+
+
+
+
+
+

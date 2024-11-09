@@ -1,0 +1,72 @@
+{%extends 'aindex.html'%}
+{% block body %}
+
+
+<body>
+<h1 align="center">Re-Artiicial Insemination Reports</h1>
+    <br>
+  <form method="post" class="search-form">
+           <table class="table table-bordered table-striped"><tr>
+               <td>
+                         <label for="start_date">Start Date:</label></td>
+               <td>
+            <input type="date" id="start_date" name="start_date" class="form-control"  ></td>
+      <td>
+            <label for="end_date">End Date:</label></td>
+               <td>
+            <input type="date" id="end_date" name="end_date" class="form-control"></td>
+               <td>
+                    <td>
+                     <input type="text" class="form-control" placeholder="Search for details" name="vals">
+                 </td>
+               </td>
+     <td>
+
+                            <button class="btn btn-primary" type="submit">Search</button>
+               </td>
+
+                             <td ><button type="button" class="btn btn-info" onclick="printDiv()">PRINT</button></td>
+
+           </tr>
+           </table>
+        </form>
+
+  <table class="table table-bordered table-striped"><tr>
+        <tr>
+            <th>Index</th>
+            <th>Farmer</th>
+            <th>Email</th>
+            <th>Species</th>
+            <th>Breed</th>
+            <th>Gender</th>
+            <th>Nearby Veterinary Hospital</th>
+            <th>Previous Insemination Date</th>
+            <th>Reason for Re-request</th>
+            <th>Preferred Date</th>
+            <th>Status</th>
+        </tr>
+
+        {% for i in key %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.farmerai.farmer_first_name }}</td>
+            <td>{{ i.farmerai.farmer_email }}</td>
+            <td>{{ i.eartagai.species }}</td>
+            <td>{{ i.eartagai.breed }}</td>
+            <td>{{ i.eartagai.gender }}</td>
+            <td>{{ i.nearby_hospital }}</td>
+            <td>{{ i.prev_insemination_date }}</td>
+            <td>{{ i.reason_for_re_request }}</td>
+            <td>{{ i.prefered_date }}</td>
+        <td>{{ i.ai_re_status }}</td>
+
+        </tr>
+        {% endfor %}
+ <tr style="height:50px;">
+        <td colspan="11" align="center"><h3 >Total No of Re Artificial Insemination requests    :
+            {{ total }}</h3></td>
+    </table>
+</body>
+{% endblock %}
+
+           

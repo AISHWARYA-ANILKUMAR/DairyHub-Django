@@ -1,0 +1,32 @@
+{% extends "uindex.html" %}
+{% block body %}
+<body>
+    <h1>Your Orders</h1>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                
+
+                <th>Date</th>
+                <th>Total</th>
+                   <th>Status</th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+              
+                <td>{{ i.bm_date }}</td>
+
+                <td>{{ i.bm_total }}</td>
+            <td>{{ i.bm_status }}</td>
+            <td><a href="/myapp/user_view_order_more/{{ i.bookingmaster_id }}#m" class="btn btn-success"> More</a> </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</body>
+{% endblock %}

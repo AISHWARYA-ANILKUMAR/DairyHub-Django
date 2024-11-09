@@ -1,0 +1,161 @@
+
+{% include 'navbar_admin.html'%}
+<html>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        img {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        /* Updated link styles */
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            th, td {
+                padding: 5px;
+                font-size: 14px;
+            }
+            
+            img {
+                max-width: 80px;
+                max-height: 80px;
+            }
+        }
+        
+        /* Button styles */
+        .button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .button:hover {
+            background-color: #45a049;
+        }
+        
+        /* Additional styles for approval and rejection buttons */
+        .approve-button {
+            background-color: #4caf50;
+        }
+        
+        .reject-button {
+            background-color: #FF0000;
+        }
+        /* New CSS for button alignment */
+        .action-cell {
+            white-space: nowrap;
+        }
+
+        .action-cell a {
+            margin-right: 10px;
+        }
+        /*reject button*/
+        .reject-button {
+            background-color: #FF0000;
+            color: #FFFFFF;
+        }
+
+        .view-button {
+            background-color: grey;
+            color: #FFFFFF;
+        }
+         /* Updated styles for status links */
+         .status-accepted {
+            color: green;
+            
+        }
+
+        .status-rejected {
+            color: red;
+        }
+
+        a:hover {
+            text-decoration: none; /* Keep the underline effect on hover */
+        }
+    </style>
+    <body>
+        <table border="1" width="100%">
+            <tr>
+                <th>Index</th>
+                <th>Species</th>
+                <th>Breed</th>
+                <th>Gender</th>
+                <th>Registration Date</th>
+                <th>Farmer Firstname</th>
+                <th>Farmer Lastname</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>View Full Details</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for i in key %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.species}}</td>
+                <td>{{i.breed}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.regidate}}</td>
+                <td>{{i.farmer.farmer_first_name}}</td>
+                <td>{{i.farmer.farmer_last_name}}</td>
+                <td>{{i.farmer.farmer_email}}</td>
+                <td>{{i.farmer.farmer_phone}}</td>
+                <td>{{i.farmer.farmer_address}}</td>
+                <td><a class="button view-button" href="{% url 'admin_view_one_eartag_request' i.id %}">View</a></td>
+                <td class="action-cell">
+                    {% if i.eartag_status == 'pending' %}
+                        <a class="button approve-button" href="admin_accept/{{i.id}}">Approve</a>
+                        <a class="button reject-button" href="admin_reject/{{i.id}}">Reject</a>
+                    {% else %}
+                        {% if i.eartag_status == 'Accepted' %}
+                            <a class="status-accepted">{{i.eartag_status}}</a>
+                        {% elif i.eartag_status == 'Rejected' %}
+                            <a class="status-rejected">{{i.eartag_status}}</a>
+                        {% else %}
+                            {{i.eartag_status}}
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

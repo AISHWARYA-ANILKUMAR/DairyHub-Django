@@ -1,0 +1,38 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+ <h1 align="center">Vaccine Application</h1>
+    <br>
+    <table class="table table-striped table-hover table-bordered">
+    <tr>
+        <th>Index</th>
+        <th>Species</th>
+        <th>vaccine type</th>
+        <th>prefered date</th>
+        <th>status</th>
+        
+        
+    </tr>
+
+    {% for i in key %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.eartag.species}}</td>
+        <td>{{i.vaccination_type}}</td>
+        <td>{{i.prefered_date}}</td>
+        <td>{{i.check_status}}</td>
+        
+        
+       
+    </tr>
+    {% endfor %}
+</table>
+</body>
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+{%extends 'findex.html'%}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Vaccine Request</title>
+    <!-- Add your CSS stylesheets or links here -->
+</head>
+<body>
+
+    <header>
+        <h1 align="center">Farmer Vaccine Request</h1>
+    </header>
+    <br>
+   
+    <form method="post" action="/myapp/farmer_vaccine">
+        <table>
+            <tr>
+                <td>Cattle</td>
+                <td><select name="cattle" class="form-control">
+                    {% for i in pp %}
+<option value="{{i.id}}">{{i.species}}-{{i.sire_id}}</option>
+
+                    {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td>Vaccine Type:</td>
+                <td>
+                    <input type="text" name="vaccine" required>
+                </td>
+            </tr>
+            
+                <tr>
+                    <td><label for="prefered_date">Preferred Date:</label></td>
+                    <td><input type="date" id="regidate" name="prefered_date" class="form-control" required></td>
+                </tr>
+            
+            <tr>
+                <td>Nearby Hospital:</td>
+                <td>
+                    <input type="text" name="nearby_hospital" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="Submit">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        // Add your JavaScript logic here if needed
+    </script>
+   
+</body>
+</html>
+{% endblock %}

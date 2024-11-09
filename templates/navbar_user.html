@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My E-commerce Store</title>
+    <style>
+        /* Navbar styles */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Right-aligned items (e.g., Cart and Favorites) */
+        .navbar-right {
+            float: right;
+        }
+
+        /* Clear floating (clearfix) */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Style for cart and favorites icons (you can use Font Awesome icons here) */
+        .cart-icon, .favorites-icon {
+            font-size: 24px;
+            color: white;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="user_view_profile">Profile</a>
+    <a href="user_page">Products</a>
+
+        <a href="user_cart_details_view"><i class="cart-icon">&#x1F6D2;</i> Cart</a>
+        <a href="user_view_own_orders"><i class="favorites-icon">&#x2764;</i> Orders</a>
+
+</div>
+
+<div style="padding: 20px;">
+    <!-- Your e-commerce content goes here -->
+</div>
+
+</body>
+</html>

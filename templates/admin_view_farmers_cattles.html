@@ -1,0 +1,38 @@
+{%extends 'aindex.html'%}
+{% block body %}
+    <br>
+    <br>
+<h1 align="center">Cattles of farmers</h1>
+<table class="table table-bordered table-hover table-striped" >
+
+    <tr>
+        <th>Index</th>
+        <th>Species</th>
+        <th>Breed</th>
+        <th>Gender</th>
+        <th>Registration Date</th>
+        <th>Colour</th>
+        
+        
+    </tr>
+
+    {% for i in view %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.species}}</td>
+        <td>{{i.breed}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.regidate}}</td>
+       <td>{{ i.colour }}</td>
+    
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+
+
+
+
+
+

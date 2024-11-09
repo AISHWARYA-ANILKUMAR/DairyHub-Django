@@ -1,0 +1,66 @@
+
+{%extends 'findex.html'%}
+{% block body %}
+    <body>
+    <h1 align="center">Artificial Insemination requests</h1>
+    <br>
+    <table class="table table-striped table-hover table-bordered">
+
+
+    <tr>
+        <th>Index</th>
+        <th>Species</th>
+        <th>Breed</th>
+        <th>Gender</th>
+        <th>Prefered Date</th>
+        <th>Nearby Veterinary Hospital</th>
+        <th>Is inseminated Before</th>
+        <th>Is first Insemination</th>
+        <th>inseminations</th>
+        <th>status</th>
+        <th>Action</th>
+        
+
+
+
+
+       
+        
+        
+    </tr>
+
+    {% for i in key %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.eartagai.species}}</td>
+        <td>{{i.eartagai.breed}}</td>
+        <td>{{i.eartagai.gender}}</td>
+        <td>{{i.prefered_date}}</td>
+        <td>{{i.near_veterinary_hospital}}</td>
+        <td>{{i.inseminated_before}}</td>
+        <td>{{i.is_first_insemination}}</td>
+        <td>{{i.no_of_inseminations}}</td>
+        <td>{{i.ai_status}}</td>
+        <td>{% if i.ai_status == "Rejected" %}
+            <a class="btn btn-primary" href="/myapp/AI_re_request/{{i.id}}/{{i.near_veterinary_hospital}}#m">Apply</a>
+            {% endif %}
+        </td>
+
+
+
+        
+
+
+    </tr>
+    {% endfor %}
+</table>
+</body>
+{% endblock %}
+
+
+
+
+
+
+
+
